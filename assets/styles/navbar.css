@@ -1,0 +1,33 @@
+.navbar{
+    background-color: rgba(37, 100, 149, 0.8);
+    z-index: 9999;
+    width: 100vw;
+}
+
+{
+    margin-right: 40px;
+}
+
+.nav-link{
+    color: white;
+}
+.nav-link.active{
+    color: white !important;
+}
+
+.nav-link:hover{
+    color: #e8e4e4;
+}
+
+.cart-container {
+    right: 0;
+}
+
+.navbar-brand{
+    color: white
+}
+
+.navbar-toggler{
+ color: white;
+}
+

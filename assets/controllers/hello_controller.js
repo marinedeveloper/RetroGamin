@@ -10,7 +10,19 @@ import { Controller } from '@hotwired/stimulus';
  * Delete this file or adapt it for your use!
  */
 export default class extends Controller {
-    connect() {
-        this.element.textContent = 'Hello Stimulus! Edit me in assets/controllers/hello_controller.js';
+    static targets = ['search', 'datalist']
+
+    searchKeyUp() {
+       fetch("api/search/"+this.searchTarget.value)
+            .then(response => response.json())
+            .then(json => {
+                this.datalistTarget.innerHTML = "";
+                for(const title of json) {
+                    const option = document.createElement("option");
+                    option.value = title
+                    this.datalistTarget.append(option);
+                    console.log(option);
+                }
+            })
     }
 }

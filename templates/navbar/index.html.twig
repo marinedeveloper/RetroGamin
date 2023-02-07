@@ -1,0 +1,60 @@
+
+
+    <nav class="navbar navbar-expand-lg p-4 ">
+        <div class="container-fluid">
+            <img src="{{ asset('./images/sushi-draw.jpg') }}" height="40"  width="40" >
+            <a class="navbar-brand" href="#">SushiLand</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Home</a>
+                    </li>
+
+                        <form action="" class="d-flex flex-row m-auto">
+
+                            <div {{ stimulus_controller('hello') }}>
+                            <input {{ stimulus_action('hello', 'searchKeyUp', 'keyup') }} {{ stimulus_target('hello', 'search') }}
+                                   class="form-control me-3" list="dataList" type="search" name="q" id="searchList">
+                            <datalist {{ stimulus_target('hello', 'datalist') }} id="dataList" ></datalist>
+                            </div>
+                            <button class="btn btn-outline-info" type="submit"> Rechercher </button>
+
+                        </form>
+
+{#                    {{ form_start(form) }}#}
+{#                    <div class="my-custom-class-for-errors">#}
+{#                        {{ form_errors(form) }}#}
+{#                    </div>#}
+
+{#                    {{ form_end(form) }}#}
+
+{#                    {{ form_start(form) }}#}
+{#                    <div class="my-custom-class-for-errors">#}
+{#                        {{ form_errors(form) }}#}
+{#                    </div>#}
+
+{#                    <div class="row">#}
+{#                        <div class="col">#}
+{#                            {{ form_widget(form.name) }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    {{ form_end(form) }}#}
+
+
+
+                    <div class="position-absolute me-5 cart-container">
+                        <a href="{{ path('app_cart') }}" class="text-decoration-none"> <span class="fa-shopping-basket"><img width="25" height="25" src="{{ asset('./images/cart-white.png') }}"></span></a>
+                        {% if app.session.get('cart') | length > 0 %}
+                        <span class="text-white">{{ app.session.get('cart')|reduce((previous, value) => previous + value) }}</span>
+                        {% endif %}
+                    </div>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
