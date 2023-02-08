@@ -71,7 +71,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h2>TOTAL : {{ total|format_currency('EUR',locale="fr") }} </h2>
-                            <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+                            <a href="{{ path('app_order') }}" type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</a>
                         </div>
                     </div>
 

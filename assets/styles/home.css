@@ -1,53 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-.flip-card {
-    background-color: transparent;
-    width: 320px;
-    height: 350px;
-    perspective: 1000px;
-    cursor: pointer
+
+/*Version Desktop*/
+hr {
+    margin: 10px auto;
+    color: #a63fa6;
+
 }
 
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+.titleProductsList {
+    font-family: 'Press Start 2P', cursive;
+
+}
+.carousel-inner > .carousel-item > img {
+    width:100%;
+    height:100%;
 }
 
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
+
+.containerProducts {
+    columns: 3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
 }
 
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+.cardGame {
+    padding: 5px 0px;
+    background-color: white;
+    height: 535px;
+    border-radius: 3px;
+    width: 350px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
 }
 
-.flip-card-back {
-    background-color: #381616;
-    color: white;
-    transform: rotateY(180deg);
-}
-
-.flip-card-front{
+.cardBody {
+    height: 270px;
     background-color: white;
 }
 
-.sushiCardImg {
-    width: 320px;
-    height: 350px;
+.cardImg {
+    height: 227px;
+    width: 100%;
+
 }
 
-h3 {
-    font-family: 'Indie Flower', cursive;
-    color: white;
-    margin: auto;
+.imageProduct {
+    height: 100%;
+    max-width: 100%;
+    width: auto;
+}
+
+.description {
+    height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+@media (max-width: 800px){
+    .containerProducts {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cardGame {
+        width: 70% !important;
+    }
+
 }
 

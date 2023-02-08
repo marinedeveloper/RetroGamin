@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
 .navbar{
-    background-color: rgba(37, 100, 149, 0.8);
+    background-color: rgba(13, 18, 33, 0.93);
     z-index: 9999;
     width: 100vw;
+    position: fixed;
+}
+
+.fontRetro {
+    font-family: 'Press Start 2P', cursive;
 }
 
 {
