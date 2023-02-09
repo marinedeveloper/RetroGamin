@@ -11,6 +11,8 @@ import './styles/navbar.css';
 import './styles/home.css';
 import './styles/slick-theme.css';
 import './styles/slick.css';
+import './styles/cart.css';
+import './styles/productDetails.css';
 
 
 // start the Stimulus application

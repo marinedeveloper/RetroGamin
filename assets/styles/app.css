@@ -1,3 +1,52 @@
 body {
     background-color: lightgray;
 }
+
+.spaceFromNavbar {
+    margin-top: 88px;
+}
+
+.buttonBlueDegrade {
+    background: rgb(20,95,233);
+    background: linear-gradient(90deg, rgba(20,95,233,1) 0%, rgba(252,176,69,1) 100%);
+    color: white;
+    height: 50px;
+    min-width: 150px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: none;
+    border-radius: 15px;
+    transition: background 1s;
+}
+
+.buttonBlueDegrade:hover {
+    background: rgb(252,176,69);
+    background: linear-gradient(16deg, rgba(252,176,69,1) 0%, rgba(20,95,233,1) 100%);
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+ .material-symbols-outlined {
+     font-variation-settings: 'FILL' 0,
+     'wght' 400,
+     'GRAD' 0,
+     'opsz' 48
+
+ }
+
+ .cart {
+     color: white;
+     margin-top: 5px;
+ }

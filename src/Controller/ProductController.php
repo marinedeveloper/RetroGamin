@@ -55,7 +55,7 @@ class ProductController extends AbstractController
                 $product->setImage($newFilename);
 
             }
-
+            $product->setSlug($slugger->slug($product->getName().uniqid()));
             $productRepository->save($product, true);
             $em->persist($product);
             $em->flush();
@@ -68,11 +68,19 @@ class ProductController extends AbstractController
             'form' => $form,
         ]);
     }
+//
+//    #[Route('/{id}', name: 'app_product_show', methods: ['GET'])]
+//    public function show(Product $product): Response
+//    {
+//        return $this->render('product/show.html.twig', [
+//            'product' => $product,
+//        ]);
+//    }
 
-    #[Route('/{id}', name: 'app_product_show', methods: ['GET'])]
+    #[Route('/{slug}', name: 'product_slug', methods: ['GET'])]
     public function show(Product $product): Response
     {
-        return $this->render('product/show.html.twig', [
+        return $this->render('product/pageProduct.html.twig', [
             'product' => $product,
         ]);
     }

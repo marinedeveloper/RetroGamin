@@ -37,6 +37,14 @@ class Product
     #[ORM\Column]
     private ?int $codeTva = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Console $console = null;
+
+
     public function __construct()
     {
         $this->orderItems = new ArrayCollection();
@@ -162,4 +170,30 @@ class Product
 
         return $this;
     }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getConsole(): ?Console
+    {
+        return $this->console;
+    }
+
+    public function setConsole(?Console $console): self
+    {
+        $this->console = $console;
+
+        return $this;
+    }
+
+
 }

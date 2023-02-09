@@ -45,8 +45,10 @@
 
 
 
-                    <div class="position-absolute me-5 cart-container">
-                        <a href="{{ path('app_cart') }}" class="text-decoration-none"> <span class="fa-shopping-basket"><img width="25" height="25" src="{{ asset('./images/cart-white.png') }}"></span></a>
+                    <div class="position-absolute d-flex me-5 cart-container">
+                        <a href="{{ path('app_cart') }}" class="text-decoration-none">
+                            <span class="material-symbols-outlined cart">shopping_cart</span>
+                        </a>
                         {% if app.session.get('cart') | length > 0 %}
                         <span class="text-white">{{ app.session.get('cart')|reduce((previous, value) => previous + value) }}</span>
                         {% endif %}

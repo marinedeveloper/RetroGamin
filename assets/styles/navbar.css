@@ -6,15 +6,13 @@
     z-index: 9999;
     width: 100vw;
     position: fixed;
+    top: 0;
 }
 
 .fontRetro {
     font-family: 'Press Start 2P', cursive;
 }
 
-{
-    margin-right: 40px;
-}
 
 .nav-link{
     color: white;

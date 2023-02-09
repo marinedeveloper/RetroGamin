@@ -4,7 +4,7 @@
 
 {% block body %}
 
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleInterval" class="carousel slide spaceFromNavbar" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="2000">
                     <img src="{{asset('build/retrogame.jpg')}}" class="d-block"  alt="...">
@@ -74,13 +74,14 @@
 
                             <div class="cardBody">
                                 <h3 class=" mt-4 card-title">{{product.name}}</h3>
+                                <h6 class=" {% if 'ps' in product.console.name  %} consolePlaystation {% elseif product.console.name is same as 'Xbox'%} consoleXbox {% else %} consoleNintendo {% endif %}">{{ product.console }}</h6>
                                 <div class="description">
                                     <p class="">{{ product.description }}</p>
 
                                 </div>
-                                <a href="" class="linkSeeMoreProduct">Voir plus</a>
+                                <a href="{{ path('product_slug', {slug: product.slug}) }}" class="linkSeeMoreProduct">Voir plus</a>
                                 <p class="w-75  pt-4 m-auto card-text mb-3">
-                                    {{ (product.price/100)| format_currency('EUR',locale="fr")}}
+                                    {{ (product.price/100* (1+codeTva[product.codeTva]/100))|format_currency('EUR',locale="fr")}}
                                 </p>
                                 <div class="d-flex flex-column">
                                     <form>
@@ -90,14 +91,14 @@
                                                        name="quantity" class="quantity w-50 m-auto mb-3"/>
                                                 <button type="submit"
                                                         data-product="{{ product.id }}"
-                                                        class="btn btn-primary w-50 addButton m-auto">Ajouter au panier</button>
+                                                        class="buttonBlueDegrade w-50 m-auto">Ajouter au panier</button>
                                             </div>
                                         {% else %}
                                             <div class="d-flex flex-column">
                                                 <input type="number" min="1" name="quantity"
                                                        class="quantity w-50 m-auto mb-3"
                                                        value="{{ app.session.get('cart')[product.id] }}"/>
-                                                <button type="submit" data-product="{{ product.id }}" class="btn btn-primary w-50 m-auto">Modifier</button>
+                                                <button type="submit" data-product="{{ product.id }}" class="buttonBlueDegrade w-50 m-auto">Modifier</button>
                                             </div>
 
                                         {% endif %}
