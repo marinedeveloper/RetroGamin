@@ -18,6 +18,7 @@ body {
     transition: background 1s;
 }
 
+
 .buttonBlueDegrade:hover {
     background: rgb(252,176,69);
     background: linear-gradient(16deg, rgba(252,176,69,1) 0%, rgba(20,95,233,1) 100%);

@@ -1,6 +1,7 @@
 console.log('here');
 //écouteurs click sur boutons et fetch
 let buttonsAdd = document.querySelectorAll('.addButton');
+let buttonsDelete = document.querySelectorAll('.deleteButton');
 
 
 function addElement(event){
@@ -15,6 +16,12 @@ function addElement(event){
 
 for(const button of buttonsAdd){
         button.addEventListener("click", addElement);
+}
+
+function removeElement(event){
+        event.preventDefault();
+
+
 }
 
 

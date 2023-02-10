@@ -33,17 +33,21 @@
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                     <button class="btn btn-link px-2"
                                             onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                        <i class="fas fa-minus"></i>
+                                        <span class="text-decoration-none">-</span>
                                     </button>
 
                                     <input id="form1" min="0" name="quantity" value="{{ cart[product.id] }}" type="number"
                                            class="form-control form-control-sm" />
 
+
                                     <button class="btn btn-link px-2"
                                             onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                        <i class="fas fa-plus"></i>
+                                        <span class="text-decoration-none">+</span>
                                     </button>
                                 </div>
+                                <button type="submit"
+                                        data-product="{{ product.id }}"
+                                        class="buttonBlueDegrade addButton"><span class="material-symbols-outlined cart">shopping_cart</span></button>
                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                     <h5 class="mb-0">{{ (product.price/100* (1+codeTva[product.codeTva]/100))|format_currency('EUR',locale="fr")}}</h5>
                                 </div>

@@ -1,0 +1,92 @@
+/*Mobile*/
+
+@media screen and (max-width: 1543px) {
+    .cardProductDetail {
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .containerDescription {
+        margin-top: 50px;
+        width: 100%;
+        padding: 30px;
+        color: white;
+        align-self: center;
+    }
+
+    .imageProductDetail {
+        width: 70%;
+        margin-left: 0;
+        margin: auto;
+    }
+}
+
+
+/* Desktop */
+
+    .imageProductDetail {
+        width: 400px;
+        margin-left: 200px;
+    }
+    .titleProductDetail {
+        text-align: center;
+        margin-top: 120px;
+    }
+
+    .consoleDetailProduct {
+        margin: 0;
+        margin-left: 20px;
+        width: 15%;
+    }
+
+    .imageProductDetail {
+        width: 400px;
+        margin-left: 200px;
+    }
+
+    .descriptionIconConsole {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .descriptionDetails {
+        margin: 20px 0;
+        height: 31px;
+    }
+
+
+
+    .containerDescription {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        min-width: 700px;
+        padding: 30px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background-color: rgba(13, 18, 33, 0.93);
+        height: 400px;
+        color: white;
+        margin-left: 150px;
+        align-self: center;
+    }
+
+    .cardProductDetail {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .hrDetailProduct {
+        background-color: rgba(13, 18, 33, 0.93);
+        height: 8px;
+        color: rgba(13, 18, 33, 0.93);
+        opacity: 1;
+    }
+
+
+
+
+
+

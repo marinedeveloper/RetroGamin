@@ -6,13 +6,36 @@
 
  <div class="containerProduct spaceFromNavbar">
 
-     <div class="">
-         <h1 class="">{{product.name}}</h1>
-         <img src="{{ asset('uploads/'~product.image) }}" class="m-auto" alt="">
-         <p class="">{{ product.description}}</p>
 
-         <p class="">{{ product.console }}</p>
+     <h1 class="titleProductDetail fontRetro">{{product.name}}</h1>
 
+     <hr class="w-50 hrDetailProduct">
+     <div class="cardProductDetail">
+         <img src="{{ asset('uploads/'~product.image) }}" class="imageProductDetail" alt="">
+         <div class="containerDescription">
+             <div class="descriptionIconConsole">
+             <span class="material-symbols-outlined">stadia_controller</span>
+             <h6 class="consoleDetailProduct {% if 'ps' in product.console.name  %} consolePlaystation {% elseif  'xbox' in product.console.name %} consoleXbox {% else %} consoleNintendo {% endif %} console">
+                 {{ product.console }}
+             </h6>
+             </div>
+             <h3 class="fontRetro descriptionDetails">Description</h3>
+             <p class="productDescription">{{ product.description}}</p>
+
+             <h4 class="priceProductDetails">Prix:  {{ (product.price/100* (1+codeTva[product.codeTva]/100))|format_currency('EUR',locale="fr")}}</h4>
+
+             <div class="d-flex flex-column">
+                 <form>
+                     <div class="d-flex flex-row justify-content-star">
+                         <input type="number" min="1"
+                                name="quantity" class="quantity quantityDetailProduct"/>
+                         <button type="submit"
+                                 data-product="{{ product.id }}"
+                                 class="buttonBlueDegrade addButton"><span class="material-symbols-outlined cart">shopping_cart</span></button>
+                     </div>
+                 </form>
+             </div>
+         </div>
      </div>
  </div>
 

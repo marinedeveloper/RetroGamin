@@ -73,40 +73,33 @@
                             </div>
 
                             <div class="cardBody">
-                                <h3 class=" mt-4 card-title">{{product.name}}</h3>
-                                <h6 class=" {% if 'ps' in product.console.name  %} consolePlaystation {% elseif product.console.name is same as 'Xbox'%} consoleXbox {% else %} consoleNintendo {% endif %}">{{ product.console }}</h6>
+                                <h4 class=" mt-4 card-title">{{product.name}}</h4>
+                                <h6 class=" console {% if 'ps' in product.console.name  %} consolePlaystation {% elseif  'xbox' in product.console.name %} consoleXbox {% else %} consoleNintendo {% endif %}">
+
+                                    {{ product.console }}
+                                </h6>
                                 <div class="description">
                                     <p class="">{{ product.description }}</p>
-
                                 </div>
-                                <a href="{{ path('product_slug', {slug: product.slug}) }}" class="linkSeeMoreProduct">Voir plus</a>
-                                <p class="w-75  pt-4 m-auto card-text mb-3">
+                                <a href="{{ path('product_slug', {slug: product.slug}) }}" class="linkSeeMoreProduct ">Voir plus</a>
+                                <hr class="w-75 mb-2">
+                                <h5 class="w-75 mb-2 p-2  m-auto card-text text-end fw-bold">
                                     {{ (product.price/100* (1+codeTva[product.codeTva]/100))|format_currency('EUR',locale="fr")}}
-                                </p>
+                                </h5>
+                                <hr class="w-75 mb-3">
                                 <div class="d-flex flex-column">
                                     <form>
-                                        {% if app.session.get("cart")[product.id] is not defined %}
-                                            <div class="d-flex flex-column">
+                                            <div class="d-flex flex-row justify-content-center">
                                                 <input type="number" min="1"
-                                                       name="quantity" class="quantity w-50 m-auto mb-3"/>
+                                                       name="quantity" class="quantity "/>
                                                 <button type="submit"
                                                         data-product="{{ product.id }}"
-                                                        class="buttonBlueDegrade w-50 m-auto">Ajouter au panier</button>
+                                                        class="buttonBlueDegrade addButton"><span class="material-symbols-outlined cart">shopping_cart</span></button>
                                             </div>
-                                        {% else %}
-                                            <div class="d-flex flex-column">
-                                                <input type="number" min="1" name="quantity"
-                                                       class="quantity w-50 m-auto mb-3"
-                                                       value="{{ app.session.get('cart')[product.id] }}"/>
-                                                <button type="submit" data-product="{{ product.id }}" class="buttonBlueDegrade w-50 m-auto">Modifier</button>
-                                            </div>
-
-                                        {% endif %}
                                     </form>
                                 </div>
                             </div>
                         </div>
-
                 {% endfor %}
             </div>
         </div>

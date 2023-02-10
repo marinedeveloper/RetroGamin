@@ -9,8 +9,6 @@
 import './styles/app.css';
 import './styles/navbar.css';
 import './styles/home.css';
-import './styles/slick-theme.css';
-import './styles/slick.css';
 import './styles/cart.css';
 import './styles/productDetails.css';
 
@@ -21,6 +19,3 @@ import 'bootstrap';
 import './main.js';
 import './stimulus-bootstrap.js';
 import './loader'
-
-
-

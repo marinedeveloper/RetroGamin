@@ -15,13 +15,6 @@ class FilterController extends AbstractController
     #[Route('/filter', name: 'app_filter')]
     public function index( Request $request, ProductRepository $productRepository): Response
     {
-        $filtersAuthorized = [
-            "price_desc" => ["price"=> "DESC"],
-            "price_asc" => ["price"=> "ASC"],
-            "name_desc" => ["name"=> "DESC"],
-            "name_asc" => ["name"=> "ASC"]
-        ];
-
         $filter = $request->get("filterlist");
 
         $minPrice = $request->get('minPrice')*100;
