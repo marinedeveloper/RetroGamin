@@ -1,0 +1,18 @@
+.backgroundLogin {
+    background-image: url(../images/tv1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 800px;
+    width: 1000px;
+
+}
+
+.start {
+    padding-top: 345px;
+}
+
+@media screen and (max-width: 1100px) {
+    .start {
+        padding-top: 90px
+    }
+}

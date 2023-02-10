@@ -1,0 +1,35 @@
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+{% endblock %}
+
+  {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+  {% endblock %}
+
+
+{% block body %}
+    <h1 class="text-center mt-5">Register</h1>
+
+    <div class="w-50 m-auto mt-4 p-5" style="background-color: rgba(80,135,177,0.71)">
+  {{ form_start(registrationForm) }}
+         {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.firstName) }}
+        {{ form_row(registrationForm.lastName) }}
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.adress) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn btn-primary m-auto">Register</button>
+    {{ form_end(registrationForm) }}
+
+    </div>
+
+
+{% endblock %}

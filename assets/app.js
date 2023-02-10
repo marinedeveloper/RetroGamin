@@ -11,6 +11,7 @@ import './styles/navbar.css';
 import './styles/home.css';
 import './styles/cart.css';
 import './styles/productDetails.css';
+import './styles/login.css';
 
 
 // start the Stimulus application
