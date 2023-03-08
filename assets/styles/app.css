@@ -2,6 +2,16 @@ body {
     background-color: lightgray;
 }
 
+.footerContainer {
+    background-color: rgba(13, 18, 33, 0.93)
+}
+
+footer {
+    bottom: 0;
+    position: relative;
+    width: 100%;
+}
+
 .spaceFromNavbar {
     margin-top: 88px;
 }

@@ -13,16 +13,30 @@
                         <a class="nav-link active fontRetro" aria-current="page" href="{{ path('app_home') }}">Home</a>
                     </li>
 
-                        <form action="" class="d-flex flex-row text-end">
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('logout') }}">Deconnexion</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                        </li>
+                    {% endif %}
 
-                            <div {{ stimulus_controller('hello') }}>
-                            <input {{ stimulus_action('hello', 'searchKeyUp', 'keyup') }} {{ stimulus_target('hello', 'search') }}
-                                   class="form-control me-3" list="dataList" type="search" name="q" id="searchList">
-                            <datalist {{ stimulus_target('hello', 'datalist') }} id="dataList" ></datalist>
-                            </div>
-                            <button class="btn btn-outline-info" type="submit"> Rechercher </button>
+                        <li><form action="{{ path('search') }}" class="d-flex flex-row text-end">
 
-                        </form>
+                                <div {{ stimulus_controller('hello') }}>
+                                    <input {{ stimulus_action('hello', 'searchKeyUp', 'keyup') }} {{ stimulus_target('hello', 'search') }}
+                                            class="form-control me-3 ms-3" list="dataList" type="search" name="q" id="searchList">
+                                    <datalist {{ stimulus_target('hello', 'datalist') }} id="dataList" ></datalist>
+                                </div>
+                                <button class="btn btn-outline-info ms-4" type="submit"> Rechercher </button>
+
+                            </form></li>
+                    <div></div>
 
 {#                    {{ form_start(form) }}#}
 {#                    <div class="my-custom-class-for-errors">#}
@@ -45,14 +59,16 @@
 
 
 
-                    <div class="position-absolute d-flex me-5 cart-container">
-                        <a href="{{ path('app_cart') }}" class="text-decoration-none">
-                            <span class="material-symbols-outlined cart">shopping_cart</span>
-                        </a>
-                        {% if app.session.get('cart') | length > 0 %}
-                        <span class="text-white">{{ app.session.get('cart')|reduce((previous, value) => previous + value) }}</span>
-                        {% endif %}
-                    </div>
+                    <li>
+                        <div class="position-absolute d-flex me-5 cart-container">
+                            <a href="{{ path('app_cart') }}" class="text-decoration-none">
+                                <span class="material-symbols-outlined cart">shopping_cart</span>
+                            </a>
+                            {% if app.session.get('cart') | length > 0 %}
+                                <span class="text-white">{{ app.session.get('cart')|reduce((previous, value) => previous + value) }}</span>
+                            {% endif %}
+                        </div>
+                    </li>
 
                 </ul>
             </div>

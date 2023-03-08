@@ -27,5 +27,14 @@ class Cart
 
     }
 
+    public function remove( Product $product, int $quantity){
+
+        $session = $this->session;
+        $cart = $session->get('cart', []);
+        unset($cart[$product->getId()]);
+//        $tva = $this->params->get("codeTva")[$product->getCodeTva()]/100+1;
+        $session->set('cart', $cart);
+    }
+
 
 }

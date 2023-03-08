@@ -12,23 +12,28 @@
 
 
 {% block body %}
-    <h1 class="text-center mt-5">Register</h1>
+    <div class="containerRegister">
+        <div class="backgroundRegister">
+            <h1 class=" titleRegister fontRetro mt-3">Register</h1>
 
-    <div class="w-50 m-auto mt-4 p-5" style="background-color: rgba(80,135,177,0.71)">
-  {{ form_start(registrationForm) }}
-         {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.firstName) }}
-        {{ form_row(registrationForm.lastName) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.adress) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn btn-primary m-auto">Register</button>
-    {{ form_end(registrationForm) }}
+            <div class=" formRegister mt-4 " >
+            {{ form_start(registrationForm) }}
+                 {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.firstName) }}
+                {{ form_row(registrationForm.lastName) }}
+                {{ form_row(registrationForm.username) }}
+                {{ form_row(registrationForm.adress) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms, {'attr': {'class': 'checkboxRegister'} } ) }}
 
+                <button type="submit" class="btn btn-dark buttonBlueDegrade mt-3 m-auto">Register</button>
+            {{ form_end(registrationForm) }}
+
+            </div>
+        </div>
     </div>
 
 

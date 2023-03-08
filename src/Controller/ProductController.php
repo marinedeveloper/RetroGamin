@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\Product1Type;
 use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManager;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -20,11 +20,24 @@ class ProductController extends AbstractController
     #[Route('/', name: 'app_product_index', methods: ['GET'])]
     public function index(ProductRepository $productRepository): Response
     {
+
         return $this->render('product/index.html.twig', [
             'products' => $productRepository->findAll(),
         ]);
     }
 
+    #[Route('/search', name: 'search')]
+    public function searchProduct(Request $request, ProductRepository $productRepository){
+        $q = $request->query->get('q');
+        $products = $productRepository->search($q);
+
+        return $this->render('home/resultSearch.html.twig', [
+            'products' => $products,
+        ]);
+
+    }
+
+    #[Security("is_granted('ROLE_ADMIN') or user === post.getUser()")]
     #[Route('/new', name: 'app_product_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $em, ProductRepository $productRepository, SluggerInterface $slugger): Response
     {
@@ -55,8 +68,11 @@ class ProductController extends AbstractController
                 $product->setImage($newFilename);
 
             }
+            $product->setCreatedAt(new DateTimeImmutable());
+            $product->setUpdatedAt(new DateTimeImmutable());
             $product->setSlug($slugger->slug($product->getName().uniqid()));
             $productRepository->save($product, true);
+
             $em->persist($product);
             $em->flush();
 
@@ -77,7 +93,7 @@ class ProductController extends AbstractController
 //        ]);
 //    }
 
-    #[Route('/{slug}', name: 'product_slug', methods: ['GET'])]
+    #[Route('/{slug}', name: 'app_product_show', methods: ['GET'])]
     public function show(Product $product): Response
     {
         return $this->render('product/pageProduct.html.twig', [
@@ -85,6 +101,7 @@ class ProductController extends AbstractController
         ]);
     }
 
+    #[Security("is_granted('ROLE_ADMIN') or user === post.getUser()")]
     #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, EntityManagerInterface $em, Product $product, ProductRepository $productRepository, SluggerInterface $slugger): Response
     {
@@ -112,7 +129,9 @@ class ProductController extends AbstractController
                 } catch (FileException $e) {
 
                 }
-
+                $product->setCreatedAt(new DateTimeImmutable());
+                $product->setUpdatedAt(new DateTimeImmutable());
+                $product->setSlug($slugger->slug($product->getName().uniqid()));
                 $product->setImage($newFilename);
                 $productRepository->save($product, true);
                 $em->persist($product);
@@ -129,10 +148,11 @@ class ProductController extends AbstractController
         ]);
     }
 
+    #[Security("is_granted('ROLE_ADMIN') or user === post.getUser()")]
     #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
     public function delete(Request $request, Product $product, ProductRepository $productRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$product->getSlug(), $request->request->get('_token'))) {
             $productRepository->remove($product, true);
         }
 

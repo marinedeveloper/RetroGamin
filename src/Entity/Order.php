@@ -25,11 +25,15 @@ class Order
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
-    #[ORM\OneToOne(inversedBy: 'orderUser', cascade: ['persist', 'remove'])]
-    private ?User $user = null;
 
     #[ORM\OneToMany(mappedBy: 'orderAssociation', targetEntity: OrderItem::class)]
     private Collection $orderItem;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'orders')]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -77,17 +81,6 @@ class Order
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, OrderItem>
@@ -119,7 +112,28 @@ class Order
         return $this;
     }
 
-    public function __toString() {
-        return $this->id;
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

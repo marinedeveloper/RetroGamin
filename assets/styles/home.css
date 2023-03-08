@@ -2,6 +2,10 @@
 
 
 /*Version Desktop*/
+.hrHome{
+    margin: 40px auto;
+}
+
 hr {
     margin: 10px auto;
     color: rgba(13, 18, 33, 0.93);
@@ -13,7 +17,7 @@ hr {
     color: white;
     border-radius: 10px;
     width: 25%;
-    margin:10px auto;
+    margin: 10px auto;
     padding: 5px 0;
     text-align: center;
 }

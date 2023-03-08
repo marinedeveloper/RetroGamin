@@ -15,27 +15,40 @@ class HomeController extends AbstractController
     public function index(ProductRepository $productRepository): Response
     {
         $products = $productRepository->findAll();
-        $maxRange = $productRepository->findOneBy([], ['price'=>'DESC'])->getPrice();
-        $minRange = $productRepository->findOneBy([], ['price'=>'ASC'])->getPrice();
+        $maxRange = $productRepository->findOneBy([], ['price' => 'DESC'])->getPrice();
+        $minRange = $productRepository->findOneBy([], ['price' => 'ASC'])->getPrice();
 
         $form = $this->createForm(SearchType::class);
 
         return $this->render('home/index.html.twig', [
             'products' => $products,
-            'maxRange'=> $maxRange,
-            'minRange'=> $minRange,
+            'maxRange' => $maxRange,
+            'minRange' => $minRange,
             'form' => $form
 
         ]);
     }
+
+    #[Route('/api/{offset}', name: 'api')]
+    public function api( int $offset,  ProductRepository $productRepository): Response
+    {
+
+        $posts = $productRepository->findBy([], ["createdAt" => "DESC"], 5, $offset);
+
+
+        return $this->render('home/api.html.twig', [
+            'posts' => $posts,
+        ]);
+
+    }
+
 
     #[Route('/api/search/{search}', name: 'api_search')]
     public function autoComplete( string $search, ProductRepository $productRepository ): Response
     {
 
         return $this->json($productRepository->searchTitle($search));
-
-
+        
 
     }
 }

@@ -12,10 +12,6 @@
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3 class="fw-normal mb-0 text-black fontRetro basket">Mon Panier</h3>
-                        <div>
-                            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
-                                            class="fas fa-angle-down mt-1"></i></a></p>
-                        </div>
                     </div>
                     {% for product in products %}
                     <div class="card rounded-3 mb-4">
@@ -29,31 +25,36 @@
                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                     <p class="lead fw-normal mb-2">{{product.name}}</p>
                                     <p>{{product.description}}</p>
+
                                 </div>
-                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                    <button class="btn btn-link px-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                        <span class="text-decoration-none">-</span>
-                                    </button>
+                                <form class="col-md-3 col-lg-3 col-xl-3">
+                                    {% if app.session.get("cart")[product.id] is not defined %}
+                                        <div class="d-flex flex-row justify-content-around align-items-center">
+                                            <input type="number" min="1"
+                                                   name="quantity" class="quantity quantityAdd "
+                                            />
+                                            <a type="submit"
+                                                    data-product="{{ product.id }}"
+                                                    class="buttonBlueDegrade btn-outline-light  align-items-center"><i class="fas fa-trash fa-lg"></i></a>
+                                        </div>
+                                    {% else %}
+                                        <div class="d-flex flex-row justify-content-around">
+                                            <input type="number" min="1" name="quantity"
+                                                   class="quantity"
+                                                   value="{{ app.session.get('cart')[product.id] }}"/>
+                                            <a type="submit" data-product="{{ product.id }}" class="btn-outline-light deleteButton">
+                                                <i class="fas fa-trash fa-lg"></i>
+                                            </a>
+                                        </div>
 
-                                    <input id="form1" min="0" name="quantity" value="{{ cart[product.id] }}" type="number"
-                                           class="form-control form-control-sm" />
+                                    {% endif %}
+                                </form>
 
 
-                                    <button class="btn btn-link px-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                        <span class="text-decoration-none">+</span>
-                                    </button>
-                                </div>
-                                <button type="submit"
-                                        data-product="{{ product.id }}"
-                                        class="buttonBlueDegrade addButton"><span class="material-symbols-outlined cart">shopping_cart</span></button>
                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                     <h5 class="mb-0">{{ (product.price/100* (1+codeTva[product.codeTva]/100))|format_currency('EUR',locale="fr")}}</h5>
                                 </div>
-                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                    <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -64,7 +65,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h2 class=""> TOTAL : {{ total|format_currency('EUR',locale="fr") }}</h2>
-                            <button class="buttonBlueDegrade orderButton"><a href="{{ path('app_order') }}" type="button" class=" link  ">Valider</a></button>
+                            <a href="{{ path('app_order') }}" type="button" class="btn buttonBlueDegrade orderButton link  ">Valider</a>
                         </div>
                     </div>
 

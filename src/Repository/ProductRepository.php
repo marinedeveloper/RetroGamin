@@ -52,6 +52,15 @@ class ProductRepository extends ServiceEntityRepository
 
     }
 
+    public function search($search)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.name LIKE :search')
+            ->setParameter('search', '%'.$search.'%')
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
 
 
     /**
@@ -59,12 +68,6 @@ class ProductRepository extends ServiceEntityRepository
      */
     public function filterByOrder($min, $max, $filter = null): array
     {
-        $filtersAuthorized = [
-            "price_desc" => ["price"=> "DESC"],
-            "price_asc" => ["price"=> "ASC"],
-            "name_desc" => ["name"=> "DESC"],
-            "name_asc" => ["name"=> "ASC"]
-        ];
 
         $qb =  $this->createQueryBuilder('p')
             ->where('p.price between :min and :max')

@@ -12,6 +12,7 @@ import './styles/home.css';
 import './styles/cart.css';
 import './styles/productDetails.css';
 import './styles/login.css';
+import './styles/register.css';
 
 
 // start the Stimulus application
@@ -19,4 +20,4 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 import './main.js';
 import './stimulus-bootstrap.js';
-import './loader'
+import './loader';

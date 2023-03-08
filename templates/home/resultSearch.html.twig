@@ -27,7 +27,7 @@
             </button>
         </div>
 
-    <hr class="w-75 hrHome">
+    <hr class="w-75 ">
 
 
     <section class="presentation-restaurant">
@@ -39,32 +39,8 @@
 
     <section class="presentation-products">
         <div class="containerListProduit flex-column mt-4">
-            <h3 class="m-auto text-center mb-4 titleProductsList"> La liste de nos Produits : </h3>
-            <div class="d-flex m-auto col-6 col-md-2">
-                <form class="" action="{{ path('app_filter') }}" >
-                    <div class=" d-flex flex-row ">
-                        <select class ="form-select form-select-sm" id="filterlist" name="filterlist" >
-                            <option value="price_desc">Ordre Décroissant</option>
-                            <option value="price_asc">Ordre Croissant</option>
-                            <option value="name_asc">Ordre Alphabétique</option>
-                            <option value="name_desc">Z-A</option>
-                        </select>
-                        <button class="btn btn-primary" type="submit">Valider</button>
-                    </div>
-                    <div class=" ">
-                        <p>Min
-                            <span id="minView">{{minRange}}</span>
-                        </p>
-                        <div id="slider" class="slider"></div>
-                        <p>Max
-                            <span id="maxView">{{maxRange}}</span>
-                        </p>
+            <h3 class="m-auto text-center mb-4 titleProductsList"> Résultat(s) pour votre recherche : </h3>
 
-                        <input id="minHidden" type="hidden" name="minPrice" value="{{minRange}}">
-                        <input id="maxHidden" type="hidden" name="maxPrice" value="{{maxRange}}">
-                    </div>
-                </form>
-            </div>
             <div class="containerProducts">
                 {% for product in products %}
 
@@ -87,7 +63,7 @@
                                 <h5 class="w-75 mb-2 p-2  m-auto card-text text-end fw-bold">
                                     {{ (product.price/100* (1+codeTva[product.codeTva]/100))|format_currency('EUR',locale="fr")}}
                                 </h5>
-                                <hr class="w-75  mb-3">
+                                <hr class="w-75 mb-3">
                                 <div class="d-flex flex-column">
                                     <form>
                                         {% if app.session.get("cart")[product.id] is not defined %}
