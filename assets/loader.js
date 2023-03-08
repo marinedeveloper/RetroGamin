@@ -19,7 +19,7 @@ for(const button of buttonsAdd){
 function removeElement(event){
         event.preventDefault();
         this.dataset.product;
-        let inputQuantity = this.previousElementSibling.value;
+        let inputQuantity = this.previousElementSibling.previousElementSibling.value;
         fetch("/cart/"+this.dataset.product+"/remove?quantity="+inputQuantity);
         window.location.reload(false);
 

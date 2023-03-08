@@ -22,7 +22,6 @@ class Cart
         $session = $this->session;
         $cart = $session->get('cart', []);
         $cart[$product->getId()] = (int)$quantity;
-//        $tva = $this->params->get("codeTva")[$product->getCodeTva()]/100+1;
         $session->set('cart', $cart);
 
     }

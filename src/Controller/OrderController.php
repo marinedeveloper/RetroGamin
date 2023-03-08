@@ -48,8 +48,7 @@ class OrderController extends AbstractController
              $order->setDeliveryAdress('');
              $order->setTotalAmount($total);
              $order->setCreatedAt(new DateTimeImmutable());
-             $order->setStatus('En Attente de Paiement');
-             $this->getUser();
+             $user = $this->getUser();
              $order->setUser($this->getUser());
              $em->persist($order);
              $em->flush();
@@ -82,7 +81,7 @@ class OrderController extends AbstractController
              $session = \Stripe\Checkout\Session::create([
                  'line_items' => $items,
                  'mode' => 'payment',
-                 'success_url' => 'http://127.0.0.1:8000/success?session_id={CHECKOUT_SESSION_ID}',
+                 'success_url' => 'http://127.0.0.1:8000/success/'.$token,
                  'cancel_url' => 'http://127.0.0.1:8000/checkout_error'
 
              ]);
@@ -92,24 +91,18 @@ class OrderController extends AbstractController
     }
 
 
-    #[Route('/success', name: 'app_success')]
-    public function successCheckout($token, Request $request,  EntityManagerInterface $em, OrderRepository $orderRepository): Response
+    #[Route('/success/{token}', name: 'app_success')]
+    public function successCheckout($token,  EntityManagerInterface $em): Response
     {
-        dump($request->getSession()->get('orderId'));
-        $order = $orderRepository->find($request->getSession()->get('orderId'));
-
         if ($this->isCsrfTokenValid('stripe_token', $token)) {
-            $order->setStatus("Validé");
             $em->flush();
-            return new Response("ok");
+            return $this->redirectToRoute('success/index.html.twig');
         } else {
             echo "error";
             exit();
         }
 
-        return $this->render('success/index.html.twig', [
 
-        ]);
 
     }
 

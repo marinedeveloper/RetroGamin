@@ -30,19 +30,25 @@
                                 <form class="col-md-3 col-lg-3 col-xl-3">
                                     {% if app.session.get("cart")[product.id] is not defined %}
                                         <div class="d-flex flex-row justify-content-around align-items-center">
-                                            <input type="number" min="1"
-                                                   name="quantity" class="quantity quantityAdd "
-                                            />
+                                            <input type="number" min="1" name="quantity"
+                                                   class="quantity"
+                                                   value="{{ app.session.get('cart')[product.id] }}"/>
+                                            <button type="submit"
+                                                    data-product="{{ product.id }}"
+                                                    class="buttonBlueDegrade addButton"><span class="material-symbols-outlined cart">shopping_cart</span></button>
                                             <a type="submit"
                                                     data-product="{{ product.id }}"
-                                                    class="buttonBlueDegrade btn-outline-light  align-items-center"><i class="fas fa-trash fa-lg"></i></a>
+                                                    class="buttonBlueDegrade btn-outline-light  align-self-center"><i class="fas fa-trash fa-lg"></i></a>
                                         </div>
                                     {% else %}
                                         <div class="d-flex flex-row justify-content-around">
                                             <input type="number" min="1" name="quantity"
                                                    class="quantity"
                                                    value="{{ app.session.get('cart')[product.id] }}"/>
-                                            <a type="submit" data-product="{{ product.id }}" class="btn-outline-light deleteButton">
+                                            <button type="submit"
+                                                    data-product="{{ product.id }}"
+                                                    class="buttonBlueDegrade addButton"><span class="material-symbols-outlined cart">shopping_cart</span></button>
+                                            <a type="submit" data-product="{{ product.id }}" class="btn-outline-light align-self-center deleteButton">
                                                 <i class="fas fa-trash fa-lg"></i>
                                             </a>
                                         </div>

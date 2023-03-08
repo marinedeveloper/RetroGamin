@@ -13,6 +13,7 @@ import './styles/cart.css';
 import './styles/productDetails.css';
 import './styles/login.css';
 import './styles/register.css';
+import './styles/addProduct.css';
 
 
 // start the Stimulus application

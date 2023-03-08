@@ -20,7 +20,6 @@ class CartController extends AbstractController
         $cart = $session->get("cart", []);
 
 
-
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,
             'products' => $productRepository->findById(array_keys($cart)),
