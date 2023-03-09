@@ -1,6 +1,6 @@
 /*Mobile*/
 
-@media screen and (max-width: 1543px) {
+@media screen and (max-width: 860px) {
     .cardProductDetail {
         flex-direction: column;
         align-content: center;
@@ -22,11 +22,17 @@
 
 
 /* Desktop */
-
+@media screen and (min-width: 865px) {
     .imageProductDetail {
         width: 400px;
         margin-left: 200px;
     }
+
+    .cardProductDetail {
+        flex-direction: row;
+    }
+
+
     .titleProductDetail {
         text-align: center;
         margin-top: 120px;
@@ -53,7 +59,6 @@
         margin: 20px 0;
         height: 31px;
     }
-
 
 
     .containerDescription {
@@ -84,7 +89,7 @@
         opacity: 1;
     }
 
-
+}
 
 
 
