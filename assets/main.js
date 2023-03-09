@@ -12,7 +12,7 @@ search.addEventListener("keyup", function () {
                 const option = document.createElement("option");
                 option.value = title
                 datalist.append(option);
-                console.log(option);
             }
         })
 });
+

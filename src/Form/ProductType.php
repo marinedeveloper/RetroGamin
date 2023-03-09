@@ -16,12 +16,7 @@ class ProductType extends AbstractType
     {
         $resolver->setDefaults([
             'class' => Product::class,
-            'label' => 'What sounds tasty?',
-            'choice_label' => 'name',
-            'multiple' => false,
-            'constraints' => [
-                new Count(min: 1, minMessage: 'We need to eat *something*'),
-            ],
+
         ]);
     }
 

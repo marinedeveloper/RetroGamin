@@ -149,7 +149,7 @@ class ProductController extends AbstractController
     }
 
     #[Security("is_granted('ROLE_ADMIN') or user === post.getUser()")]
-    #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
+    #[Route('/{slug}', name: 'app_product_delete', methods: ['POST'])]
     public function delete(Request $request, Product $product, ProductRepository $productRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getSlug(), $request->request->get('_token'))) {

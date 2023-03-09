@@ -21,6 +21,10 @@
     color: white !important;
 }
 
+.navbar-toggler{
+    border-color: white;
+}
+
 .nav-link:hover{
     color: #e8e4e4;
 }

@@ -29,7 +29,7 @@
                 <td>{{ product.console }}</td>
 
                 <td>
-                    <a class="btn btn-primary" href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
+                    <a class="btn btn-primary" href="{{ path('app_product_show', {'slug': product.slug}) }}">show</a>
                     <a class="btn btn-warning" href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
                 </td>
             </tr>

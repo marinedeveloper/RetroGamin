@@ -48,7 +48,6 @@ class HomeController extends AbstractController
     {
 
         return $this->json($productRepository->searchTitle($search));
-        
 
     }
 }

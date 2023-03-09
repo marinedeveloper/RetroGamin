@@ -1,4 +1,4 @@
-console.log('here');
+
 //écouteurs click sur boutons et fetch
 let buttonsAdd = document.querySelectorAll('.addButton');
 let buttonsDelete = document.querySelectorAll('.deleteButton');

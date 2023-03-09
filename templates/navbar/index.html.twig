@@ -3,7 +3,9 @@
             <img src="{{ asset('build/logo2.png') }}" height="40"  width="40" >
             <a class="navbar-brand fontRetro ms-2" href="#">RetroGamin'</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="material-symbols-outlined">
+menu
+</span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav w-100">
@@ -24,9 +26,10 @@
                     {% endif %}
                     <form action="{{ path('search') }}" class="d-flex flex-row text-end">
 
-                        <div {{ stimulus_controller('hello') }}>
-                            <input class="form-control me-3 ms-3" list="dataList" type="search" name="q" id="searchList">
-                            <datalist {{ stimulus_target('hello', 'datalist') }} id="dataList" ></datalist>
+                        <div >
+                            <input
+                                    class="form-control me-3 ms-3" list="dataList" type="search" name="q" id="searchList">
+                            <datalist  id="dataList" ></datalist>
                         </div>
                         <button class="btn buttonBlueDegrade btnSearch ms-4" type="submit"> Rechercher </button>
                     </form>
