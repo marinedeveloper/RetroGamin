@@ -12,11 +12,16 @@
         padding: 30px;
         color: white;
         align-self: center;
+        background-color: rgba(13, 18, 33, 0.93);;
     }
 
     .imageProductDetail {
-        width: 70%;
+        width: 100%;
        margin-left: 0;
+    }
+
+    .spaceFromNavbar {
+        margin-top: 110px;
     }
 }
 
@@ -26,6 +31,7 @@
     .imageProductDetail {
         width: 400px;
         margin-left: 200px;
+        margin-bottom: 66px;
     }
 
     .cardProductDetail {
